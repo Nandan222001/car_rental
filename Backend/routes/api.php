@@ -7,6 +7,7 @@ use App\Http\Controllers\UsersController;
 use App\Http\Controllers\CarController;
 use App\Http\Controllers\RentController;
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\OtpController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -52,4 +53,6 @@ Route::put('cars/{id}', [CarController::class, 'update']);
 Route::put('rents/{id}', [RentController::class, 'update']);
 Route::put('users/{id}', [UserController::class, 'update']);
 
+Route::post('/send-otp', [OtpController::class, 'sendOtp']);
+Route::post('/verify-otp', [OtpController::class, 'verifyOtp']);
 Route::post('/create-order', [PaymentController::class, 'createOrder']);
