@@ -9,8 +9,8 @@ class OtpController extends Controller
 {
     public function sendOtp(Request $request)
     {
-        // $email = $request->input('email');
-        $email = "nandansingh222001@gmail.com";
+        $email = $request->input('email');
+        // $email = "nandansingh222001@gmail.com";
 
         $otp = rand(100000, 999999); 
         Mail::send('emails.otp', ['otp' => $otp], function ($msg) use ($email) {
@@ -25,8 +25,8 @@ class OtpController extends Controller
 
     public function verifyOtp(Request $request)
     {
-        // $email = $request->email;
-        $email = "nandansingh222001@gmail.com";
+        $email = $request->email;
+        // $email = "nandansingh222001@gmail.com";
         $enteredOtp = $request->otp;
 
         $cachedOtp = Cache::get("otp_for_{$email}");
